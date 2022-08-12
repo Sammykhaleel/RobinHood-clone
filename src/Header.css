@@ -1,0 +1,38 @@
+.header__wrapper {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+  
+  .header__logo {
+    margin-left: 48px;
+  }
+  
+  .header__search {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 10px;
+  }
+  
+  .header__searchContainer {
+    width: 375px;
+    height: 20px;
+    border: 1px solid #31363A;
+    border-radius: 4px;
+  }
+
+  .header__searchContainer > input {
+    border: none;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: transparent;
+    color: white;
+  }
+
+  .header__searchContainer > input:focus {
+    outline: none;
+  }
