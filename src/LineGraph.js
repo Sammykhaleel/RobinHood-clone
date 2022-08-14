@@ -11,12 +11,14 @@
 
 // export default LineGraph
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Line} from 'react-chartjs-2'
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
+// import { Chart, registerables } from 'chart.js';
+// Chart.register(...registerables);
 
 function LineGraph() {
+
+  const [GraphData, setGraphData] = useState([])
   const data = [
     {
       x:10,
@@ -31,17 +33,28 @@ function LineGraph() {
       y:100
     }
   ]
+
+  const createMockData = ()=>{
+    let data = [];
+    let value = 100;
+    for(var i = 0; i < 366; i++){
+      let date = new Date();
+      date.setHours(0,0,0,0);
+      date.setDate(i);
+      value += Math.round((Math.random() < 0.7 ? 1 : 0) * Math.random() * 50);
+      data.push({x: date, y: value});
+    }   
+    setGraphData(data)
+  }
+
+  useEffect(()=>{
+    createMockData()
+  },[])
   return (
     <div><Line data ={ {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
         datasets: [{
           // label: 'My First Dataset',
-          // type: "line",
-          // data: data,
-          // backgroundColor: 'rgba(255, 99, 132, 0.2)',  
-          // borderColor: 'rgb(255, 99, 132)',
-          // borderWidth: 1
-          
           type: 'line',
           backgroundColor: "black",
           borderColor: "#5AC53B",
@@ -52,21 +65,34 @@ function LineGraph() {
           pointHoverBorderColor: '#000000',
           pointHoverBorderWidth: 4,
           pointHoverRadius: 6,
-          data: data,
+          data: GraphData,
         }]
       }}
       options={{
-        plugins: {
-          tooltip: {
+        // plugins: {
+          tooltips: {
               usePointStyle: true,
               mode: "index",
               intersect: false,
           }
-        },
+        // }
+        ,
         scales:{
+          xAxes: [
+            {
+              type: "time",
+              time: {
+                format: "MM/DD/YY",
+                tooltipFormat: "ll",
+              },
+              ticks: {
+                display: true,
+              }
+            },
+          ],
           yAxes:[{
             ticks: {
-              display: false
+              display: true
             }
         }]
         }
