@@ -1,18 +1,6 @@
-// import React from 'react'
-// import {Line} from 'react-chartjs-2'
-// import { Chart, registerables } from 'chart.js';
-// Chart.register(...registerables);
-
-// function LineGraph() {
-//   return (
-//     <div><Line /></div>
-//   )
-// }
-
-// export default LineGraph
-
 import React, { useEffect, useState } from 'react'
 import {Line} from 'react-chartjs-2'
+import './LineGraph.css'
 // import { Chart, registerables } from 'chart.js';
 // Chart.register(...registerables);
 
@@ -51,7 +39,8 @@ function LineGraph() {
     createMockData()
   },[])
   return (
-    <div><Line data ={ {
+    <div className='linegraph'>
+      <Line data ={ {
       // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
         datasets: [{
           // label: 'My First Dataset',
@@ -69,6 +58,7 @@ function LineGraph() {
         }]
       }}
       options={{
+        maintainAspectRatio: false,
         // plugins: {
           tooltips: {
               usePointStyle: true,
