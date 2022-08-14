@@ -1,5 +1,5 @@
 .stats {
     flex: 0.3;
     background-color: red;
-    
+    flex-shrink: 0;
   }

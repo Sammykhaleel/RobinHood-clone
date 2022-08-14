@@ -3,7 +3,14 @@
     border: 1px solid orange ;
     color: white;
   }
+  .newsfeed__chart {
+    width: 100%;
+  }
 
+  .newsfeed__chartSection {
+    display: flex;
+    flex-direction: column;
+  }
   .newsfeed__portfolio {
     text-align: left;
   }
@@ -15,3 +22,5 @@
   .newsfeed__portfolio p{
     margin-top: 0;
   }
+
+  
